@@ -1,24 +1,79 @@
-header {
+body {
+    font-family:  Helvetica;
+  }
+  
+  .container {
+    width: 450px;
+    margin: 0 auto;
     text-align: center;
-    margin-left: 25%;
-    margin-right: 25%;
-    border-radius: 15px;
-    padding: 10px;
-}
-
-.section{
-    display: flex;
+    padding: 20px;
+  }
+  
+  header {
+    background-color: #faeb1f;
+    color: #d4d4d4;
     text-align: center;
-    flex-direction: column;
-}
-
-.grup {
-    display: flex;
-    align-self: center;
-    margin-top: 0.2rem;
-}
-
-.footer {
-    margin-top: 10vh;
-    text-align: center;
-}
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 10px;
+  }
+  
+  label {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  input[type="number"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .btn-konversi {
+    background-color: #4caf50;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .btn-reverse {
+    background-color: #1dcce0;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .btn-reset {
+    background-color: #089bf7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .btn-konversi:hover {
+    background-color: #ff7b00;
+  }
+  
+  .btn-reverse:hover {
+    background-color: #e100ff;
+  }
+  
+  .btn-reset:hover {
+    background-color: #00ff0d;
+  }
+  
+  p {
+    margin: 20px 0;
+  }
+  

@@ -1,52 +1,44 @@
-const input = document.getElementById('input')
-const hasil = document.getElementById('hasil')
-const kalkulasi = document.getElementById('kalkulasi')
-const konversi = document.getElementById('konversi')
-const reset = document.getElementById('reset')
-const sebaliknya = document.getElementById('sebaliknya')
-const label_input = document.getElementById('label_input')
-const label_hasil = document.getElementById('label_hasil')
-let kebalikan = false
-const regex = /^[+-.,eE\d]+$/
+const temperatureForm = document.getElementById("temperature-form");
+const temperatureInput = document.getElementById("temperature");
+const displayResult = document.getElementById("result");
+const btnReverse = document.getElementById("btn-reverse");
+const btnReset = document.getElementById("btn-reset");
 
-const t_konversi = () => {
-    try {
-        if (regex.test(input.value)) {
-            if (!kebalikan) {
-                hasil.value = (input.value * 9 / 5) +32
-                kalkulasi.value = `${input.value}% * (9/5) + 32 = ${hasil.value}%` 
-            } else {
-                hasil.value = (input.value - 32) * 5/9
-                kalkulasi.value = `(${input.value}% - 32) * 5/9 = ${hasil.value}%` 
-            }
-        } else  {
-            throw new SyntaxError("Input tidak Valid!")
-        }
-    } catch (error) {
-        alert('Konversi Gagal : ' + error.messsage)
-    }
-} 
+temperatureForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  if (validateInput(temperatureInput.value)) {
+    convertToCelcius();
+  } else {
+    displayResult.innerText = "Masukkan suhu yang valid (Celcius).";
+  }
+});
 
-const t_sebaliknya = () => {
-    try {
-        kebalikan = !kebalikan
-        let temp = label_input.innerText
-        label_hasil.innerText = temp
-        input.value = hasil.value
-        if(hasil.value){
-            t_konversi()
-        }
-    } catch (error) {
-        alert('Sebaliknya Gagal : ' + error.messsage)
-    }
+btnReverse.addEventListener("click", function () {
+  if (validateInput(temperatureInput.value)) {
+    convertToFahrenheit();
+  } else {
+    displayResult.innerText = "Masukkan suhu yang valid (Fahrenheit).";
+  }
+});
+
+btnReset.addEventListener("click", function () {
+  temperatureInput.value = "";
+  displayResult.innerText = "";
+});
+
+function validateInput(input) {
+  const inputPattern = /^-?\d*\.?\d+$/;
+  return inputPattern.test(input);
 }
 
-const t_reset = () => {
-    try {
-        input.value = ""
-        hasil.value = ""
-        kalkulasi.value = ""
-    } catch (error) {
-        alert('Reset Gagal : ' + error.messsage)
-    }
+function convertToCelcius() {
+  const celcius = parseFloat(temperatureInput.value);
+  const fahrenheit = (celcius * 9) / 5 + 32;
+  displayResult.innerText = `Hasil Konversi: ${celcius} Celcius = ${fahrenheit.toFixed(2)} Fahrenheit`;
+}
+
+function convertToFahrenheit() {
+  const fahrenheit = parseFloat(temperatureInput.value);
+  const celcius = ((fahrenheit - 32) * 5) / 92;
+  displayResult.innerText = `Hasil Konversi: ${fahrenheit} Fahrenheit = ${celcius.toFixed(2)} Celcius`;
 }
